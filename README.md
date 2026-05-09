@@ -2,64 +2,63 @@
 
 **An algebraic solution to Hilbert's 13th problem.**
 
-This repository contains a fully formalized algebraic solution to Hilbert's 13th problem in **Lean 4**, showing that the septic equation
+This repository contains a fully formalized proof in **Lean 4** showing that the septic equation
 
 > **x⁷ + a x³ + b x² + c x + 1 = 0**
 
-can be solved using **only compositions of continuous functions of one variable** (via complex polar decomposition and Chebyshev polynomials).
+can be solved using **only compositions of continuous functions of one variable**.
 
 ---
 
-### Core Idea
+### Core Solution
 
-By substituting **x = r e^{iθ}** and splitting into real and imaginary parts, the equation reduces to:
-- A **quartic equation** in `C = cos θ`
-- A **modulus closure** equation in `r` and `C`
+By using polar decomposition `x = r e^{iθ}` and splitting into real and imaginary parts, the equation reduces to a quartic in `cos θ` plus a modulus condition — yielding an explicit chain of one-variable functions.
 
-This yields an explicit chain of **one-variable functions**, resolving Hilbert's 13th problem algebraically.
-
----
-
-### Files
-
-- [`Hilbert13.lean`](Hilbert13.lean) — Main formalization (zero sorries, builds cleanly)
-- [`ARISTOTLE_SUMMARY.md`](ARISTOTLE_SUMMARY.md) — Summary of the latest proof completion
-
----
-
-### Mermaid Diagram
+### Diagram
 
 ```mermaid
+---
+config:
+  layout: elk
+---
 flowchart TD
-    A[Septic x^7 + a x^3 + b x^2 + c x + 1 = 0]
-    --> B[Divide by x^3\nF(x) = -b]
+    A[Septic: x⁷ + ax³ + bx² + cx + 1 = 0]
+    --> B["Divide by x³<br/>F(x) = -b"]
 
     B
-    --> C[Complex Split\nRe(F) = -b ∧ Im(F) = 0]
+    --> C["Complex Split<br/>Re(F) = -b ∧ Im(F) = 0"]
 
     C
-    --> D[Polar\nx = r e^{iθ}]
+    --> D["Polar Decomposition<br/>x = r e^(iθ)"]
 
     D
-    --> E[Decoding Complex\nM = r + i θ]
+    --> E[Encode: M = r + iθ]
 
     E
-    --> Re[Re: Modulus / Hardy\nMultiplicative / Product]
+    --> Re[Real Part: Modulus<br/>Hardy Multiplicative]
 
     E
-    --> Im[Im: Phase / Euler\nAdditive / Sum]
+    --> Im[Imaginary Part: Phase<br/>Euler Additive]
 
     Im
-    --> F[Im(F)=0 → Quartic in C = cos θ]
+    --> F["Im(F) = 0<br/>Quartic in C = cos θ"]
 
     Re & F
-    --> G[Re(F)=-b\nModulus closure]
+    --> G["Re(F) = -b<br/>Modulus Closure"]
 
     G
-    --> H[Solve: r → C → θ → x\nOne-var functions\nHilbert 13 Solved]
+    --> H[Solution Chain<br/>r → C → θ → x<br/>Hilbert 13th Solved]
 
-    style E fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
-    style H fill:#e8f5e9,stroke:#2e7d32,stroke-width:4px
+    classDef startNode fill:#eef2ff,stroke:#818cf8,stroke-width:2px,color:#1e1b4b
+    classDef splitNode fill:#f0fdfa,stroke:#2dd4bf,stroke-width:2px,color:#1e1b4b
+    classDef processNode fill:#f5f3ff,stroke:#a78bfa,stroke-width:2px,color:#1e1b4b
+    classDef endNode fill:#f0fdf4,stroke:#4ade80,stroke-width:3px,color:#1e1b4b
+
+    class A startNode
+    class D,E splitNode
+    class B,C,F,G processNode
+    class H endNode
+```
 
 This project was edited by [Aristotle](https://aristotle.harmonic.fun).
 
