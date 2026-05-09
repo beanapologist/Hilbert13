@@ -1,6 +1,6 @@
 # Hilbert13
 
-**An algebraic solution to Hilbert's 13th problem.**
+**Explicit continuous (Kolmogorov–Arnold style) decomposition of the Hilbert septic roots via polar coordinates and Chebyshev factorization, fully formalized in Lean 4.**
 
 This repository contains a fully formalized proof in **Lean 4** showing that the septic equation
 
