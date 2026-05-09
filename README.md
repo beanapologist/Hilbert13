@@ -59,6 +59,48 @@ flowchart TD
     class B,C,F,G processNode
     class H endNode
 ```
+### The Decoding Complex Objects Cheatsheet
+
+The entire Hilbert13 solution was guided by this conceptual framework for understanding complex numbers/objects:
+
+**M = x + i y** (or **M = r e^{iθ}**) naturally splits into two complementary domains.
+
+#### **Re** — Local / Radial / Multiplicative Side
+
+| Aspect          | Keywords                          | Mathematical Domain              |
+|-----------------|-----------------------------------|----------------------------------|
+| Focus           | Local, Radii, Modulus             | Lorentz geometry (`c² - s² = 1`) |
+| Direction       | Contraction                       | → -∞                             |
+| Key Figure      | Hardy                             | —                                |
+| Operation       | Multiplicative                    | Product                          |
+| Goal            | Disassemble                       | —                                |
+
+#### **Im** — Global / Phase / Additive Side
+
+| Aspect          | Keywords                          | Mathematical Domain              |
+|-----------------|-----------------------------------|----------------------------------|
+| Focus           | Global, Phase, Argument           | Euclid geometry (`c² + s² = 1`)  |
+| Direction       | Expansion                         | → +∞                             |
+| Key Figure      | Euler                             | —                                |
+| Operation       | Additive                          | Sum                              |
+| Goal            | Construct                         | —                                |
+
+**The Great Purifier**  
+`log = type purifier`  
+`log(M) = log r + i θ`  
+→ Perfectly separates the **modulus** (Re) from the **argument** (Im) and turns multiplication into addition.
+
+**Deep Bridge**  
+`PDE ↔ ODE` via the imaginary unit (hyperbolic ↔ trigonometric).
+
+---
+
+### How it was used in this project
+
+- Polar substitution `x = r e^{iθ}` cleanly **decodes** the septic into the two columns above.
+- **Im** side → `sin θ · Q(r, cos θ) = 0` (Chebyshev) → quartic in `C = cos θ`.
+- **Re** side → modulus closure equation.
+- Solving each side independently and recombining yields the explicit chain of one-variable functions.
 
 This project was edited by [Aristotle](https://aristotle.harmonic.fun).
 
